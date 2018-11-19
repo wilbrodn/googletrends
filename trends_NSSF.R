@@ -20,5 +20,3 @@ ugketz <- plot(gtrends(c("NSSF Uganda", "NSSF Kenya", "NSSF Tanzania"), time = "
 ugketzsa <- plot(gtrends(c("NSSF Uganda", "NSSF Kenya", "NSSF Tanzania", "SASSA South Africa"), time = "all"))
 
 
-
-
