@@ -1,8 +1,11 @@
+
+rm(list = ls())
+
 library(gtrendsR)
 library(tidyverse)
+library(plotly)
 
-
-ug<-gtrends("NSSF Uganda")
+ug<-gtrends("NSSF Uganda", time = "all")
 
 interest<-ug$interest_over_time
 country<-ug$interest_by_country
@@ -12,7 +15,8 @@ relatedQueries<-ug$related_queries
 
 str(interest)
 
-plot(data = interest, aes(x= date, y = hits, color=gprop)) + geom_col()
+
+ggplotly(ggplot(data = interest, aes(x= date, y = hits, fill=gprop)) + geom_col() + geom_smooth())
 
 ugke <- plot(gtrends(c("NSSF Uganda", "NSSF Kenya"), time = "all"))
 ugketz <- plot(gtrends(c("NSSF Uganda", "NSSF Kenya", "NSSF Tanzania"), time = "all"))
