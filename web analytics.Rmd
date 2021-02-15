@@ -1,0 +1,167 @@
+---
+title: "Is it time to drive web traffic?"
+author: "Wilbrod Ntawiha"
+date: "4 December 2018"
+output:
+  html_document:
+    code_folding: hide
+    df_print: paged
+    fig_caption: yes
+    highlight: textmate
+    keep_md: yes
+    theme: readable
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: yes
+      number_sections: no
+---
+
+
+
+***
+
+*for leisure or bed time reading :) *
+
+***
+
+
+
+```{r, setup, echo=TRUE, warning = FALSE, message = FALSE, cache=TRUE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, results='markup', include = TRUE)
+
+#Load the necessary libraries
+rm(list = ls())
+
+library(gtrendsR)
+library(tidyverse)
+library(plotly)
+library(knitr)
+library(kableExtra)
+
+ug<-gtrends("NSSF Uganda", time = "all")
+
+interest<-ug$interest_over_time
+country<-ug$interest_by_country
+dma<-ug$interest_by_dma
+relatedTopics<-ug$related_topics
+relatedQueries<-ug$related_queries
+
+relatedQueries$category[c(1, 2, 9)]<-"Employment Opportunities at NSSF"
+relatedQueries$category[c(3,5, 6, 7, 15)]<-"NSSF e services"
+relatedQueries$category[c(8,11,17)]<-"NSSF general information"
+relatedQueries$category[c(4)]<-"NSSF legal information"
+
+ugke <- plot(gtrends(c("NSSF Uganda", "NSSF Kenya"), time = "all"))
+ugketz <- plot(gtrends(c("NSSF Uganda", "NSSF Kenya", "NSSF Tanzania"), time = "all"))
+
+ugketzsa <- plot(gtrends(c("NSSF Uganda", "NSSF Kenya", "NSSF Tanzania", "SASSA South Africa"), time = "all"))
+
+```
+
+
+# Summary
+
+
+
+<br>
+
+***
+
+# 1.  Introduction
+
+NSSF Uganda is transforming fast into an efficient organisation through innovation, but also digitisation and inclusive evidence based decision making. However, to attribute success to any indicator, we have to be able to measure or at least estimate its progress and contribution.
+
+To know how digitisation is improving externally requires we perform metrics that inform us how are the different digital networks are performing. One of the biggest digital network that clients connect with business is through the web. Hence, web analytics is not just an optional task but a must for any transformational organisation.
+
+We need to be able to answer some of these questions to enact positive external change:
+
++ How is the interest in NSSF Uganda over time?
+
++ What information on NSSF Uganda are they lookign for? What other items are they looking for?
+
++ What other organisations are they looking at? Are they our competitors?
+
++ Which other players can potentially drive our traffic?
+
+These and more questions can be answered through web analytics. [Web analytics](https://en.wikipedia.org/wiki/Web_analytics) is the measurement, collection, analysis and reporting of web data for purposes of understanding and optimizing web usage.
+
+
+One of the ways to access web perofrmance is through search [hits](https://support.google.com/analytics/answer/6086082?hl=en). There are many search engines such as Google, yahoo, Bing, DuckDuckGo, Ask.com, Yandex, WebCrawler, Infospace, Startpage and Baidu, [among others](https://hackernoon.com/the-best-search-engines-on-the-internet-9c0314250601).
+
+For the sake of this briefing, we shall use [Google](https://www.google.com/) search engine data. 
+
+__*Why Google search engine data?*__
+
+*Google dominates the search engine market. At the time of writing this paper, Google had a market share of 92.4%, followed by Bing (2.3%). In Uganda, Google's market share is even higher (95.4%) and Bing (2.4%).*
+
+*This means Google search engine data gives at least 95% of all search data on the web. Hence, the best sample any analyst can wish for at the moment.*
+
+<br>
+
+The findings from this briefing and the digital disruption are expected to initiate a discussion on creating a digital transformation strategy to move NSSF from omnichannel to an ecosystem organisation.
+
+<br>
+
+***
+
+# 2.  NSSF Uganda --- search (*and web*) interest
+
+
+## 2.1. Search interest over time
+
+Search hits for *__"NSSF Uganda"__* raised steadily from and average of 11 hits per day in 2007 to 56 hits in mid --- 2015. Since 2015, the daily average has been dropping steadily up to 44 hits in November 2018.
+
+The rise in the hits could have been driven by the rise in internet and use of computers. At the moment, the organisation can only mantain interest within the public by going to them, due to many competiting things they have to see on the web.
+
+To drive the hits requires the organisation to develop a strategic plan for the web but also for the whoel digital transaformation.
+
+
+*Figure 2.1.1. Interest in NSSF Uganda on the Google search engine over time*
+
+
+```{r, cache= TRUE}
+
+
+ggplotly(ggplot(data = interest, aes(x= date, y = hits, fill=gprop)) + geom_col() + geom_smooth())
+
+
+
+```
+
+
+<br>
+
+## 2.2. What are people looking for?
+
+
+
+
+# 3.  How does the Fund compare within the region via web hits
+
+
+
+
+
+# 4.  We can do more with web analytics
+
+
+
+
+
+
+# 5.  Appendices
+
+
+
+
+
+
+# About the Author
+
+
+
+
+
+
+
